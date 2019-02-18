@@ -67,6 +67,12 @@ You must consider the physical layout of the warehouse, both to determine storag
 
 Location stocking limits help guarantee that work isn't created to request that inventory be put in a location that doesn't have the physical capacity to carry the inventory. For example, if some locations within a warehouse can hold only one pallet per location, location stocking limits can be enabled. The **Quantity** value can be set to **1**, and the **Unit** value can be set to **PL** within a specific location profile grouping. 
 
+Please note that when the application evaluates the use of location stocking limits, the lowest logical level will be looked at first to find the limit quantity for the **location**. This means that when e.g. having multiple item numbers defined for the same location:
+- @Location1 ; @Item1 ; @Qty1
+- @Location1 ; @Item2 ; @Qty2
+
+it will be either @Qty1 or @Qty2 (depending on first item number selection) getting used for the **Location** - but not both quantities.
+
 If more advanced calculations are required to control the location capacity constraints, the location profile settings can be used. In this case, the weight and volume are considered when capacity calculations are done. 
 
 To achieve optimal outbound processes, you should evaluate whether to use fixed picking locations and/or packing locations. Often, minimum/maximum replenishment is used for replenishment processes from a bulk area to the fixed picking locations, and multiple fixed picking locations can be enabled within the same warehouse and for product variants. Consider the flexibility that can you achieve by enabling dedicated demand replenishment overflow locations that are used only for wave/load replenishment processing.
