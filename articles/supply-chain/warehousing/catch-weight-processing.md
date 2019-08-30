@@ -97,6 +97,7 @@ You can also define how the weight is captured. In one of the two main flows, ca
 - **No** – The item doesn't use catch weight tags. The inbound and outbound weighing processes are based on the actual weight that is captured during each process.
 
 The process of tracking catch weight tags can be used for items that won't change weight during the storage period. The weight will be captured only during the inbound warehouse process. During the outbound process, the catch weight tags will just be scanned, and the weights that are associated with the tags will be used for the outbound transactional processing.
+When using catch weight tags it is possible to define how to link to the physical on-hand; either only via the product, tracking, and inventory status dimensions - or using all the inventory dimensions.
 
 ### How to capture catch weight
 
@@ -178,14 +179,14 @@ Not all workflows support catch weight product processing with warehouse managem
  
 ### Catch weight tags
 
-Currently, the functionality for catch weight tags is supported only as part of the following scenarios:
+Currently, the functionality for catch weight tags is supported as part of the following scenarios:
 
 - When processing purchase order warehouse app receiving.
 - When processing load receiving via warehouse app.
 - For license plate receiving that is related to a purchase order load, weight assignment is requested during the receiving process. By contrast, for transfer order receiving, the weight from the shipment data for the transfer order is used.
 - For transfer order item and line receiving that comes from a non-warehouse management process warehouse.
 - The processing of sales return order receiving can record catch weight tags, but the processing won't be validated if the tags are the same tags that were originally shipped for a particular sales order line.
-- When processing a inventory status changed by using the warehouse app.
+- When processing a inventory status changed by using the warehouse app, via periodic inventory status change, and on-hand by location.
 - When a warehouse transfer is done by using the warehouse app.
 - When processing adjustment in and out via the warehouse app.
 - When picking work is processed for sales and transfer orders. (Note that catch weight tags can't be recorded for production component picking.)
